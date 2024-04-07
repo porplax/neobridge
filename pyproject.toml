@@ -1,15 +1,21 @@
-[tool.poetry]
+[project]
 name = "neobridge"
-version = "0.1.1"
-description = ""
-authors = ["Zayne Marsh <saynemarsh9@gmail.com>"]
+version = "0.1.0"
+description = "Lets you control neopixels from your PC using a board."
+authors = [
+    {name = "Zayne Marsh", email = "saynemarsh9@gmail.com"},
+]
+dependencies = [
+    "pyserial>=3.5",
+]
+requires-python = ">=3.12"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.12"
-pyserial = "^3.5"
-
+license = {text = "MIT"}
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
