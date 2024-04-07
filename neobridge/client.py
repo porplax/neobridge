@@ -4,7 +4,7 @@ import board
 import sys
 import time
 import json
-
+RESET = -2
 WAIT_FOR_RESPONSE = -1
 SET_ALL = 0
 SET_ONE = 1
@@ -46,6 +46,9 @@ while True:
                     neo[i] = (r,g,b)
                 elif command == SHOW:
                     neo.show()
+                elif command == RESET:
+                    print('\r\n')
+                    supervisor.reload()
             except:
                 pass
                     

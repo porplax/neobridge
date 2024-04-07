@@ -15,6 +15,11 @@ class Neobridge:
         self.ser.write(b"\r\n")
         self.ser.flush()
     
+    def _reset(self):
+        """Resets the board. Useful if you want to reset the board to a known state.
+        """
+        self._send_cmd({'command': Command.RESET.value})
+    
     def wait_for_response(self):
         """Sends a command to the board to wait for a response.
         """
