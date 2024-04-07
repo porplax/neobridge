@@ -9,65 +9,13 @@
 # Installation
 `pip install neobridge`
 ## Setup (board)
-To start controlling neopixels directly from your PC, you have to setup your circuitpython board to receive serial commands. This is already programmed in the `client.py` script. Copy the code below and paste into your `main.py` script on your board so this is run every bootup.
-```py
-import neopixel
-import supervisor
-import board
-import sys
-import time
-import json
+To start controlling neopixels directly from your PC, you have to setup your circuitpython board to receive serial commands. This is already programmed in the `code.py` script. Follow the steps below.
+1. Download [code.py](https://github.com/porplax/neobridge/blob/master/src/neobridge/code.py)
+2. Move to the circuitpython board (*RP2040 is officially supported*)
+3. **You will need to edit `code.py` to fit your setup!** (*Number of LEDs, Pin location, Order*)
+4. Run the script.
+The script will run every bootup.
 
-WAIT_FOR_RESPONSE = -1
-SET_ALL = 0
-SET_ONE = 1
-SHOW = 2
-
-# Replace these if this is different!
-PIXEL_PIN = board.GP15 
-NUMBER_OF_PIXELS = 30
-ORDER = neopixel.GRB
-
-neo = neopixel.NeoPixel(
-    PIXEL_PIN, NUMBER_OF_PIXELS, brightness=1, auto_write=False, pixel_order=ORDER)
-neo.fill((0, 0, 0))
-neo.show()
-
-serial = sys.stdin
-
-while True:
-    if supervisor.runtime.serial_bytes_available:
-        data_in = serial.readline()
-        data = None
-        if data_in:
-          # To prevent errors, data is set to whatever is in sys.stdin. Else, it'll fetch commands.
-            try:
-                data = json.loads(data_in)
-            except ValueError:
-                data = {"raw": data_in}
-
-        if isinstance(data, dict):
-            try:
-                command = data['command']
-
-                # Easy way of dealing with commands.
-                if command == WAIT_FOR_RESPONSE:
-                    print('\r\n')
-                elif command == SET_ALL:
-                    r,g,b = data['r'],data['g'],data['b']
-                    neo.fill((r,g,b))
-                elif command == SET_ONE:
-                    r,g,b = data['r'],data['g'],data['b']
-                    i = data['index']
-                    neo[i] = (r,g,b)
-                elif command == SHOW:
-                    neo.show()
-            except:
-                pass
-                    
-                    
-    time.sleep(0.0001)
-```
 ## Setup (PC/Linux/MacOS)
 Now that the board is ready for serial communication, you can now control it from your PC directly. This lets you program a lot of cool lighting effects! The example below creates a 'loading' bar like effect.
 ```py
