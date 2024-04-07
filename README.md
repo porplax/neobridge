@@ -1,5 +1,6 @@
 <p align="center">
   <img src="https://github.com/porplax/neobridge/assets/66521670/23d60ffd-23db-4962-be2c-74dc497fe5ad">
+  [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm-project.org)
 </p>
 
 --------
