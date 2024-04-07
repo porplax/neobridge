@@ -34,16 +34,15 @@ a = Neobridge(serial.Serial(
             timeout=0.05,
             write_timeout=1), 30)
 
-# Set all LEDs to black (nothing)
-a.setall((0, 0, 0))
-a.show()
+a.setall((0, 0, 0)) # Set all LEDs to black (nothing)
+a.show() # Update to show change!
 
 c = cycle(range(0, 30))
 for i in c:
-    a.setone((255, 255, 255), i)
+    a.setone((255, 255, 255), i) # Set only one at a time.
     a.show()
     
-    a.setall((0, 0, 0))
+    a.setall((0, 0, 0)) # Reset to black.
     time.sleep(1 / FRAME_RATE)
 ```
 Before you can start controlling from PC, you have to enter the location of your board.
