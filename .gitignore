@@ -1,2 +1,3 @@
 *.tar.gz
 *.whl
+tests/__template__.py

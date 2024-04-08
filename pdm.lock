@@ -5,7 +5,193 @@
 groups = ["default"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:0f1fb3e2fa80cca1ffe251d3536644abba0af403fa6c54a7decf60c8b0309afd"
+content_hash = "sha256:7f19ba6f53aa1db69fd66bfd8ca604ece394df183cc2835f99a4353f349caa46"
+
+[[package]]
+name = "click"
+version = "8.1.7"
+requires_python = ">=3.7"
+summary = "Composable command line interface toolkit"
+groups = ["default"]
+dependencies = [
+    "colorama; platform_system == \"Windows\"",
+]
+files = [
+    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
+    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},
+]
+
+[[package]]
+name = "colorama"
+version = "0.4.6"
+requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+summary = "Cross-platform colored terminal text."
+groups = ["default"]
+marker = "platform_system == \"Windows\""
+files = [
+    {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
+    {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
+]
+
+[[package]]
+name = "markdown-it-py"
+version = "3.0.0"
+requires_python = ">=3.8"
+summary = "Python port of markdown-it. Markdown parsing, done right!"
+groups = ["default"]
+dependencies = [
+    "mdurl~=0.1",
+]
+files = [
+    {file = "markdown-it-py-3.0.0.tar.gz", hash = "sha256:e3f60a94fa066dc52ec76661e37c851cb232d92f9886b15cb560aaada2df8feb"},
+    {file = "markdown_it_py-3.0.0-py3-none-any.whl", hash = "sha256:355216845c60bd96232cd8d8c40e8f9765cc86f46880e43a8fd22dc1a1a8cab1"},
+]
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+requires_python = ">=3.7"
+summary = "Markdown URL utilities"
+groups = ["default"]
+files = [
+    {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
+    {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
+]
+
+[[package]]
+name = "mouseinfo"
+version = "0.1.3"
+summary = "An application to display XY position and RGB color information for the pixel currently under the mouse. Works on Python 2 and 3."
+groups = ["default"]
+dependencies = [
+    "pyperclip",
+    "python3-Xlib; platform_system == \"Linux\" and python_version >= \"3.0\"",
+    "rubicon-objc; platform_system == \"Darwin\"",
+]
+files = [
+    {file = "MouseInfo-0.1.3.tar.gz", hash = "sha256:2c62fb8885062b8e520a3cce0a297c657adcc08c60952eb05bc8256ef6f7f6e7"},
+]
+
+[[package]]
+name = "pyautogui"
+version = "0.9.54"
+summary = "PyAutoGUI lets Python control the mouse and keyboard, and other GUI automation tasks. For Windows, macOS, and Linux, on Python 3 and 2."
+groups = ["default"]
+dependencies = [
+    "mouseinfo",
+    "pygetwindow>=0.0.5",
+    "pymsgbox",
+    "pyobjc-core; platform_system == \"Darwin\"",
+    "pyobjc-framework-quartz; platform_system == \"Darwin\"",
+    "pyscreeze>=0.1.21",
+    "python3-Xlib; platform_system == \"Linux\" and python_version >= \"3.0\"",
+    "pytweening>=1.0.4",
+]
+files = [
+    {file = "PyAutoGUI-0.9.54.tar.gz", hash = "sha256:dd1d29e8fd118941cb193f74df57e5c6ff8e9253b99c7b04f39cfc69f3ae04b2"},
+]
+
+[[package]]
+name = "pygetwindow"
+version = "0.0.9"
+summary = "A simple, cross-platform module for obtaining GUI information on application's windows."
+groups = ["default"]
+dependencies = [
+    "pyrect",
+]
+files = [
+    {file = "PyGetWindow-0.0.9.tar.gz", hash = "sha256:17894355e7d2b305cd832d717708384017c1698a90ce24f6f7fbf0242dd0a688"},
+]
+
+[[package]]
+name = "pygments"
+version = "2.17.2"
+requires_python = ">=3.7"
+summary = "Pygments is a syntax highlighting package written in Python."
+groups = ["default"]
+files = [
+    {file = "pygments-2.17.2-py3-none-any.whl", hash = "sha256:b27c2826c47d0f3219f29554824c30c5e8945175d888647acd804ddd04af846c"},
+    {file = "pygments-2.17.2.tar.gz", hash = "sha256:da46cec9fd2de5be3a8a784f434e4c4ab670b4ff54d605c4c2717e9d49c4c367"},
+]
+
+[[package]]
+name = "pymsgbox"
+version = "1.0.9"
+summary = "A simple, cross-platform, pure Python module for JavaScript-like message boxes."
+groups = ["default"]
+files = [
+    {file = "PyMsgBox-1.0.9.tar.gz", hash = "sha256:2194227de8bff7a3d6da541848705a155dcbb2a06ee120d9f280a1d7f51263ff"},
+]
+
+[[package]]
+name = "pyobjc-core"
+version = "10.2"
+requires_python = ">=3.8"
+summary = "Python<->ObjC Interoperability Module"
+groups = ["default"]
+marker = "platform_system == \"Darwin\""
+files = [
+    {file = "pyobjc-core-10.2.tar.gz", hash = "sha256:0153206e15d0e0d7abd53ee8a7fbaf5606602a032e177a028fc8589516a8771c"},
+    {file = "pyobjc_core-10.2-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:a70546246177c23acb323c9324330e37638f1a0a3d13664abcba3bb75e43012c"},
+]
+
+[[package]]
+name = "pyobjc-framework-cocoa"
+version = "10.2"
+requires_python = ">=3.8"
+summary = "Wrappers for the Cocoa frameworks on macOS"
+groups = ["default"]
+marker = "platform_system == \"Darwin\""
+dependencies = [
+    "pyobjc-core>=10.2",
+]
+files = [
+    {file = "pyobjc-framework-Cocoa-10.2.tar.gz", hash = "sha256:6383141379636b13855dca1b39c032752862b829f93a49d7ddb35046abfdc035"},
+    {file = "pyobjc_framework_Cocoa-10.2-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:18886d5013cd7dc7ecd6e0df5134c767569b5247fc10a5e293c72ee3937b217b"},
+]
+
+[[package]]
+name = "pyobjc-framework-quartz"
+version = "10.2"
+requires_python = ">=3.8"
+summary = "Wrappers for the Quartz frameworks on macOS"
+groups = ["default"]
+marker = "platform_system == \"Darwin\""
+dependencies = [
+    "pyobjc-core>=10.2",
+    "pyobjc-framework-Cocoa>=10.2",
+]
+files = [
+    {file = "pyobjc-framework-Quartz-10.2.tar.gz", hash = "sha256:9b947e081f5bd6cd01c99ab5d62c36500d2d6e8d3b87421c1cbb7f9c885555eb"},
+    {file = "pyobjc_framework_Quartz-10.2-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:3e8e33246d966c2bd7f5ee2cf3b431582fa434a6ec2b6dbe580045ebf1f55be5"},
+]
+
+[[package]]
+name = "pyperclip"
+version = "1.8.2"
+summary = "A cross-platform clipboard module for Python. (Only handles plain text for now.)"
+groups = ["default"]
+files = [
+    {file = "pyperclip-1.8.2.tar.gz", hash = "sha256:105254a8b04934f0bc84e9c24eb360a591aaf6535c9def5f29d92af107a9bf57"},
+]
+
+[[package]]
+name = "pyrect"
+version = "0.2.0"
+summary = "PyRect is a simple module with a Rect class for Pygame-like rectangular areas."
+groups = ["default"]
+files = [
+    {file = "PyRect-0.2.0.tar.gz", hash = "sha256:f65155f6df9b929b67caffbd57c0947c5ae5449d3b580d178074bffb47a09b78"},
+]
+
+[[package]]
+name = "pyscreeze"
+version = "0.1.30"
+summary = "A simple, cross-platform screenshot module for Python 2 and 3."
+groups = ["default"]
+files = [
+    {file = "PyScreeze-0.1.30.tar.gz", hash = "sha256:74098ad048e76a6231dcfa6243343af94459b8c829f9ccb7a44a5d3b147a67d1"},
+]
 
 [[package]]
 name = "pyserial"
@@ -15,6 +201,52 @@ groups = ["default"]
 files = [
     {file = "pyserial-3.5-py2.py3-none-any.whl", hash = "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"},
     {file = "pyserial-3.5.tar.gz", hash = "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb"},
+]
+
+[[package]]
+name = "python3-xlib"
+version = "0.15"
+summary = "Python3 X Library"
+groups = ["default"]
+marker = "platform_system == \"Linux\" and python_version >= \"3.0\""
+files = [
+    {file = "python3-xlib-0.15.tar.gz", hash = "sha256:dc4245f3ae4aa5949c1d112ee4723901ade37a96721ba9645f2bfa56e5b383f8"},
+]
+
+[[package]]
+name = "pytweening"
+version = "1.2.0"
+summary = "A collection of tweening (aka easing) functions."
+groups = ["default"]
+files = [
+    {file = "pytweening-1.2.0.tar.gz", hash = "sha256:243318b7736698066c5f362ec5c2b6434ecf4297c3c8e7caa8abfe6af4cac71b"},
+]
+
+[[package]]
+name = "rich"
+version = "13.7.1"
+requires_python = ">=3.7.0"
+summary = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+groups = ["default"]
+dependencies = [
+    "markdown-it-py>=2.2.0",
+    "pygments<3.0.0,>=2.13.0",
+]
+files = [
+    {file = "rich-13.7.1-py3-none-any.whl", hash = "sha256:4edbae314f59eb482f54e9e30bf00d33350aaa94f4bfcd4e9e3110e64d0d7222"},
+    {file = "rich-13.7.1.tar.gz", hash = "sha256:9be308cb1fe2f1f57d67ce99e95af38a1e2bc71ad9813b0e247cf7ffbcc3a432"},
+]
+
+[[package]]
+name = "rubicon-objc"
+version = "0.4.8"
+requires_python = ">=3.8"
+summary = "A bridge between an Objective C runtime environment and Python."
+groups = ["default"]
+marker = "platform_system == \"Darwin\""
+files = [
+    {file = "rubicon-objc-0.4.8.tar.gz", hash = "sha256:f7bede0f0e73dde07083785984c75b3acf76116298743758ea5c51b3ebb81978"},
+    {file = "rubicon_objc-0.4.8-py3-none-any.whl", hash = "sha256:59633f622e3c6e740bd9b3c4b60d0258fc2d30632b05d46cba12fae69539cfd3"},
 ]
 
 [[package]]
@@ -29,6 +261,17 @@ files = [
 ]
 
 [[package]]
+name = "shellingham"
+version = "1.5.4"
+requires_python = ">=3.7"
+summary = "Tool to Detect Surrounding Shell"
+groups = ["default"]
+files = [
+    {file = "shellingham-1.5.4-py2.py3-none-any.whl", hash = "sha256:7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686"},
+    {file = "shellingham-1.5.4.tar.gz", hash = "sha256:8dbca0739d487e5bd35ab3ca4b36e11c4078f3a234bfce294b0a0291363404de"},
+]
+
+[[package]]
 name = "supervisor"
 version = "4.2.5"
 summary = "A system for controlling process state under UNIX"
@@ -39,4 +282,32 @@ dependencies = [
 files = [
     {file = "supervisor-4.2.5-py2.py3-none-any.whl", hash = "sha256:2ecaede32fc25af814696374b79e42644ecaba5c09494c51016ffda9602d0f08"},
     {file = "supervisor-4.2.5.tar.gz", hash = "sha256:34761bae1a23c58192281a5115fb07fbf22c9b0133c08166beffc70fed3ebc12"},
+]
+
+[[package]]
+name = "typer"
+version = "0.12.1"
+requires_python = ">=3.7"
+summary = "Typer, build great CLIs. Easy to code. Based on Python type hints."
+groups = ["default"]
+dependencies = [
+    "click>=8.0.0",
+    "rich>=10.11.0",
+    "shellingham>=1.3.0",
+    "typing-extensions>=3.7.4.3",
+]
+files = [
+    {file = "typer-0.12.1-py3-none-any.whl", hash = "sha256:43ebb23c8a358c3d623e31064359a65f50229d0bf73ae8dfd203f49d9126ae06"},
+    {file = "typer-0.12.1.tar.gz", hash = "sha256:72d218ef3c686aed9c6ff3ca25b238aee0474a1628b29c559b18b634cfdeca88"},
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.11.0"
+requires_python = ">=3.8"
+summary = "Backported and Experimental Type Hints for Python 3.8+"
+groups = ["default"]
+files = [
+    {file = "typing_extensions-4.11.0-py3-none-any.whl", hash = "sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a"},
+    {file = "typing_extensions-4.11.0.tar.gz", hash = "sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0"},
 ]

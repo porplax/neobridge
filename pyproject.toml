@@ -1,6 +1,6 @@
 [project]
 name = "neobridge"
-version = "0.1.0"
+version = "0.2.0"
 description = "Lets you control neopixels from your PC using a board."
 authors = [
     {name = "Zayne Marsh", email = "saynemarsh9@gmail.com"},
@@ -8,6 +8,8 @@ authors = [
 dependencies = [
     "pyserial>=3.5",
     "supervisor>=4.2.5",
+    "pyautogui>=0.9.54",
+    "typer>=0.12.1",
 ]
 requires-python = ">=3.12"
 readme = "README.md"

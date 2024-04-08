@@ -4,11 +4,13 @@ import board
 import sys
 import time
 import json
+
+SHOW = -3
 RESET = -2
 WAIT_FOR_RESPONSE = -1
+
 SET_ALL = 0
 SET_ONE = 1
-SHOW = 2
 
 PIXEL_PIN = board.GP15
 NUMBER_OF_PIXELS = 30
@@ -53,4 +55,5 @@ while True:
                 pass
                     
                     
-    time.sleep(0.0001)
+    time.sleep(0.00001)
+
