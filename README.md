@@ -90,6 +90,15 @@ neobridge.setone(self, rgb: tuple, index: int)
 ```
 
 ```py
+neobridge.setlist(self, rgb_list: list)
+"""
+*Gives the board a list of RGB values to set.*
+    Args:
+        rgb (rgb_list): RGB list to set.
+"""
+```
+
+```py
 neobridge.show(self)
 """
 Sends a command to the board to update the LEDs.
