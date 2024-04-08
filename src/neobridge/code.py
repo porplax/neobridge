@@ -55,5 +55,4 @@ while True:
                 pass
                     
                     
-    time.sleep(0.00001)
 
