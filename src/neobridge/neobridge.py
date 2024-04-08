@@ -2,11 +2,6 @@ import json
 import sys
 import time
 import serial
-try:
-    from neopixel import NeoPixel
-except ModuleNotFoundError:
-    NeoPixel = None
-import supervisor
 from neobridge.command import Command
 
 class Neobridge:
@@ -57,42 +52,3 @@ class Neobridge:
         """Sends a command to the board to update the LEDs.
         """
         self._send_cmd({'command': Command.SHOW.value})
-        
-    def run(self, neo: NeoPixel, rate: int = 12):
-        """Runs the NeoPixel program on the board.
-        
-            Args:
-                neopixel (neopixel.NeoPixel): The NeoPixel object to use.
-                rate (int, optional): The rate at which to update the LEDs. Defaults to 12
-                """
-        stdin = sys.stdin
-        while True:
-            data_in = serial.readline()
-            data = None
-            if data_in:
-                try:
-                    data = json.loads(data_in)
-                except ValueError:
-                    data = {"raw": data_in}
-
-            if isinstance(data, dict):
-                try:
-                    command = data['command']
-                    
-                    if command == Command.WAIT_FOR_RESPONSE.value:
-                        print('\r\n')
-                    elif command == Command.SET_ALL.value:
-                        r,g,b = data['r'],data['g'],data['b']
-                        neo.fill((r,g,b))
-                    elif command == Command.SET_ONE.value:
-                        r,g,b = data['r'],data['g'],data['b']
-                        i = data['index']
-                        neo[i] = (r,g,b)
-                    elif command == Command.SHOW.value:
-                        neo.show()
-                    elif command == Command.RESET.value:
-                        print('\r\n')
-                        supervisor.reload()
-                except:
-                    pass
-            time.sleep(1 / rate)
