@@ -11,6 +11,7 @@ WAIT_FOR_RESPONSE = -1
 
 SET_ALL = 0
 SET_ONE = 1
+SET_LIST = 2
 
 PIXEL_PIN = board.GP15
 NUMBER_OF_PIXELS = 30
@@ -51,6 +52,10 @@ while True:
                 elif command == RESET:
                     print('\r\n')
                     supervisor.reload()
+                elif command == SET_LIST:
+                    _list = data['rgb_list']
+                    for i in _list:
+                        neo[i] = _list[i]
             except:
                 pass
                     
