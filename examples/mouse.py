@@ -21,13 +21,14 @@ def run(port: str, number_of_leds: int, baudrate: int = 115200, timeout: float =
         x = int(x/64)
         neo.setall((255, 0, 0))
         
+        brightness = (int(y/30)*-1)*5
         # has to be a better way of doing this 💀
         try:
-            neo.setone((64, 64, 64), x-(2-OFFSET))
-            neo.setone((127, 127, 127), x-(1-OFFSET))
-            neo.setone((255, 255, 255), x+(OFFSET))
-            neo.setone((127, 127, 127), x+(1+OFFSET))
-            neo.setone((64, 64, 64), x+(2+OFFSET))
+            neo.setone((64+min(brightness, 64), 64+min(brightness, 64), 64+min(brightness, 64)), x-(2-OFFSET))
+            neo.setone((127+min(min(brightness, 127), 127), 127+min(brightness, 127), 127+min(brightness, 127)), x-(1-OFFSET))
+            neo.setone((255+min(brightness, 255), 255+min(brightness, 255), 255+min(brightness, 255)), x+(OFFSET))
+            neo.setone((127+min(brightness, 127), 127+min(brightness, 127), 127+min(brightness, 127)), x+(1+OFFSET))
+            neo.setone((64+min(brightness, 64), 64+min(brightness, 64), 64+min(brightness, 64)), x+(2+OFFSET))
         except IndexError:
             pass
         

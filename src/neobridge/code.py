@@ -5,12 +5,14 @@ import sys
 import time
 import json
 
-SHOW = -3
-RESET = -2
-WAIT_FOR_RESPONSE = -1
+class Command:
+    SHOW = -3
+    RESET = -2
+    WAIT_FOR_RESPONSE = -1
 
-SET_ALL = 0
-SET_ONE = 1
+    SET_ALL = 0
+    SET_ONE = 1
+    SET_TO_LIST = 2
 
 PIXEL_PIN = board.GP15
 NUMBER_OF_PIXELS = 30
@@ -37,23 +39,23 @@ while True:
             try:
                 command = data['command']
                 
-                if command == WAIT_FOR_RESPONSE:
+                if command == Command.SHOW:
+                    neo.show()
+                elif command == Command.RESET:
                     print('\r\n')
-                elif command == SET_ALL:
+                    supervisor.reload()
+                elif command == Command.WAIT_FOR_RESPONSE:
+                    print('\r\n')
+                elif command == Command.SET_ALL:
                     r,g,b = data['r'],data['g'],data['b']
                     neo.fill((r,g,b))
-                elif command == SET_ONE:
+                elif command == Command.SET_ONE:
                     r,g,b = data['r'],data['g'],data['b']
                     i = data['index']
                     neo[i] = (r,g,b)
-                elif command == SHOW:
-                    neo.show()
-                elif command == RESET:
-                    print('\r\n')
-                    supervisor.reload()
+                elif command == Command.SET_TO_LIST:
+                    _list = data['rgb_list']
+                    for i in range(len(neo)):
+                        neo[i] = _list[i]
             except:
                 pass
-                    
-                    
-    time.sleep(0.00001)
-
