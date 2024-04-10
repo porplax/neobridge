@@ -47,6 +47,11 @@ class Neobridge:
         self._send_cmd({'command': Command.SET_ONE.value, 'r': rgb[0], 'g': rgb[1], 'b': rgb[2], 'index': index})
     
     def setlist(self, rgb_list: list):
+        """Gives the board a list of RGB values to set.
+            
+        Args:
+            rgb (rgb_list): RGB list to set.
+        """
         if len(rgb_list) != self.MAXIMUM_LEDS+1:
             raise IndexError(f"Misshaped list, RGB list must have length {self.MAXIMUM_LEDS+1}")
         self._send_cmd({'command': Command.SET_TO_LIST.value, 'rgb_list': rgb_list})

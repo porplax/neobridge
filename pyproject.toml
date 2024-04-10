@@ -1,6 +1,6 @@
 [project]
 name = "neobridge"
-version = "0.2.0"
+version = "0.2.2"
 description = "Lets you control neopixels from your PC using a board."
 authors = [
     {name = "Zayne Marsh", email = "saynemarsh9@gmail.com"},
