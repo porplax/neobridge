@@ -2,13 +2,19 @@ use std::str;
 use std::time::Duration;
 
 use serialport::{self, SerialPort};
-
 pub struct Neobridge {
     port: Box<dyn SerialPort>, 
     number_of_leds: u32
 }
 
-pub struct RGB(u32, u32, u32);
+#[derive(Debug)]
+pub struct RGB(pub u8, pub u8, pub u8);
+
+impl RGB {
+    pub fn to_string(&self) -> String {
+        return format!("({0}, {1}, {2})", self.0, self.1, self.2);
+    }
+}
 
 impl Neobridge {
 
@@ -33,53 +39,39 @@ impl Neobridge {
         self.port.write("\r\n".as_bytes()).expect("could not write to serial port");
         self.port.flush().expect("could not flush to serial port");
     }
-
-    fn reset(&mut self) {
-        self.send_message(r#"{"command": -2}"#);
-    }
-
+    
     pub fn show(&mut self) {
         self.send_message(r#"{"command": -3}"#);
     }
 
-    pub fn set_all(&mut self, color: RGB) -> Result<(), &'static str> {
+    pub fn set_all(&mut self, color: RGB) {
         let msg = self.replace_with_color(r#"{"command": 0, "r": {0}, "g": {1}, "b": {2}}"#, color);
         let binding = msg.as_str();
 
         self.send_message(binding);
-        Ok(())
     }
 
-    pub fn set_one(&mut self, color: RGB, index: u32) -> Result<(), &'static str> {
-        if self.number_of_leds-1 < index
+    pub fn set_one(&mut self, color: RGB, index: u32) {
+        if self.number_of_leds < index
             {panic!("You give me an index greater than what you set as!");}
         let msg = self.replace_with_color(r#"{"command": 1, "r": {0}, "g": {1}, "b": {2}, "index": {3}}"#, color);
         let index_replace = msg.replace("{3}", index.to_string().as_str());
         let binding = index_replace.as_str();
 
         self.send_message(binding);
-        Ok(())
     }
-}
 
-fn main() {
-    let mut neobridge = Neobridge::new("COM3", 30);
     
-    neobridge.set_all(RGB(0, 0, 0)).unwrap();
-    neobridge.show();
-
-    let mut i = 0;
-    loop {
-        if (i == 30) {
-            i = 0;
+    pub fn set_list(&mut self, colors: Vec<RGB>)  {
+        // xxx: this could be extremely inefficient, but this will work for now.
+        let mut list_replace: Vec<String> = vec![];
+        for rgb in colors {
+            list_replace.push(rgb.to_string());
         }
+        
+        let msg = r#"{"command": 2, "rgb_list": [{0}]}"#.replace("{0}", &list_replace.join(", ").replace("(", "[").replace(")", "]"));
+        let binding = msg.as_str();
 
-        neobridge.set_one(RGB(255, 0, 255), i).unwrap();
-        neobridge.show();
-        std::thread::sleep(std::time::Duration::from_millis(50));
-
-        neobridge.set_all(RGB(0, 0, 0)).unwrap();
-
-        i += 1;
+        self.send_message(binding);
     }
 }
