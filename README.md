@@ -19,10 +19,10 @@ The script will run every bootup.
 ## Setup (PC/Linux/MacOS)
 Now that the board is ready for serial communication, you can now control it from your PC directly. This lets you program a lot of cool lighting effects! The example below creates a 'loading' bar like effect.
 ```rust
-use neobridge::{Neobridge, RGB};
+use neobridge_rust::{Neobridge, RGB};
 
 fn main() {
-    let neobridge = Neobridge::new("COM3", 30);
+    let mut neobridge = Neobridge::new("COM3", 30);
     neobridge.set_all(RGB(0, 0, 0));
     neobridge.show();
 
