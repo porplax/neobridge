@@ -8,11 +8,15 @@ pub struct Neobridge {
 }
 
 #[derive(Debug)]
-pub struct RGB(pub u8, pub u8, pub u8);
+pub struct RGB {
+    r: u8,
+    g: u8,
+    b: u8
+}
 
 impl RGB {
     pub fn to_string(&self) -> String {
-        return format!("({0}, {1}, {2})", self.0, self.1, self.2);
+        return format!("({0}, {1}, {2})", self.r, self.g, self.b);
     }
 }
 
@@ -28,9 +32,9 @@ impl Neobridge {
     }
 
     fn replace_with_color(&mut self, msg: &str, color: RGB) -> String {
-        let mut replace = str::replace(msg, "{0}", color.0.to_string().as_str());
-        replace = str::replace(replace.as_str(), "{1}", color.1.to_string().as_str());
-        replace = str::replace(replace.as_str(), "{2}", color.2.to_string().as_str());
+        let mut replace = str::replace(msg, "{0}", color.r.to_string().as_str());
+        replace = str::replace(replace.as_str(), "{1}", color.g.to_string().as_str());
+        replace = str::replace(replace.as_str(), "{2}", color.b.to_string().as_str());
         return replace;
     }
 
@@ -63,7 +67,7 @@ impl Neobridge {
 
     
     pub fn set_list(&mut self, colors: Vec<RGB>)  {
-        // xxx: this could be extremely inefficient, but this will work for now.
+        // xxx: this is extremely inefficient, but this will work for now.
         let mut list_replace: Vec<String> = vec![];
         for rgb in colors {
             list_replace.push(rgb.to_string());
