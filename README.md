@@ -7,7 +7,7 @@
 <p align="center">Control your neopixels from your PC!</p>
 
 # Installation
-`pip install neobridge`
+`cargo add neobridge`
 ## Setup (board)
 To start controlling neopixels directly from your PC, you have to setup your circuitpython board to receive serial commands. This is already programmed in the `code.py` script. Follow the steps below.
 1. Download [code.py](https://github.com/porplax/neobridge/blob/master/src/neobridge/code.py)
