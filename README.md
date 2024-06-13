@@ -105,4 +105,4 @@ Sends a command to the board to update the LEDs.
 """
 ```
 # TO-DO List
-- [ ] Create automated installer for the board. (could do?)
+- [X] Create automated installer for the board. (could do?)
