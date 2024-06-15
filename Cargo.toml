@@ -7,7 +7,7 @@ repository = "https://github.com/porplax/neobridge/tree/neobridge-rs"
 readme = "README.md"
 description = "Lets you control neopixels from your PC using a board."
 keywords = ["embedded", "neopixels", "api", "serial", "board"]
-categories = ["embedded-development", "multimedia", "hardware-support"]
+categories = ["embedded", "multimedia", "hardware-support"]
 
 [dependencies]
 serialport = "4.3.0"
