@@ -63,7 +63,8 @@ impl Neobridge {
 
     
     pub fn set_list(&mut self, colors: &Vec<RGB>)  {
-        let result: String = colors.into_iter().map(|x| x.to_string() + ",").collect();
+        let mut result: String = colors.into_iter().map(|x| x.to_string() + ",").collect();
+        result.pop();
         
         let msg = r#"{"command": 2, "rgb_list": [{0}]}"#.replace("{0}", &result.replace("(", "[").replace(")", "]"));
         let binding = msg.as_str();
