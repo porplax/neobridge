@@ -71,4 +71,9 @@ impl Neobridge {
 
         self.send_message(binding);
     }
+
+    pub fn reset(&mut self) {
+        self.set_all(RGB(0, 0, 0));
+        self.show();
+    }
 }
