@@ -7,7 +7,7 @@ pub struct Neobridge {
     number_of_leds: u32
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub struct RGB(pub u8, pub u8, pub u8);
 
 impl RGB {
